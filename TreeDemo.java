@@ -14,6 +14,10 @@ class BinarySearchTree{
 
    Node root;
    
+	public BinarySearchTree(int val) 
+    {
+      root = new Node(val);
+    }
    
    /*
    recursive insert method
@@ -139,13 +143,22 @@ class BinarySearchTree{
   
   
   
-   /*
-   a method to find the node in the tree
-   with a largest key
-   */
-   public int getMax(Node root){
-	  //implement me
-   }
+   /**
+     * Gets the maximum value in the binary serach tree
+     * @param root Root node for traversal
+     * @return returns the maximum value in the binary search tree
+     */
+    public int getMax(Node root)
+    {
+      if(root.right == null)
+      {
+         return root.value;
+      }
+      else
+      {
+         return getMin(root.right);
+      }
+    }
    
    
    
@@ -189,17 +202,36 @@ class BinarySearchTree{
 
 public class TreeDemo{
    public static void main(String[] args){
-      BinarySearchTree t1  = new BinarySearchTree();
-      t1.insert(24);
-      t1.insert(80);
-      t1.insert(18);
-      t1.insert(9);
-      t1.insert(90);
-      t1.insert(22);
-            
-      System.out.print("in-order :   ");
-      t1.inOrderTraversal(t1.root);
-      System.out.println();
+      BinarySearchTree t1  = new BinarySearchTree(24);
+       t1.insert(t1.root, 80);
+       t1.insert(t1.root, 18);
+       t1.insert(t1.root, 9);
+       t1.insert(t1.root, 90);
+       t1.insert(t1.root, 22);
+
+       System.out.print("pre-order: ");
+       t1.preOrderTraversal(t1.root);
+       System.out.println("");
+
+       System.out.print("in-order: ");
+       t1.inOrderTraversal(t1.root);
+       System.out.println("");
+
+       System.out.print("post-order: ");
+       t1.postOrderTraversal(t1.root);
+       System.out.println("");
+
+       boolean foundKey = t1.find(t1.root, 22);
+       System.out.println("Does 22 exist in the binary search tree? " + foundKey);
+       
+       boolean keyNotFound = t1.find(t1.root, 2124);
+       System.out.println("Does 2124 exist in the binary search tree? " + keyNotFound);
+
+       int min = t1.getMin(t1.root);
+       System.out.println("The minimum value is: " + min);
+
+       int max = t1.getMax(t1.root);
+       System.out.println("The maximum value is: " + max);
            
       
    }  
