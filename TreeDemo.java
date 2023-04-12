@@ -70,12 +70,20 @@ class BinarySearchTree{
    
    
    
-   /*
-   post-order traversal
-   */
-   public void postOrderTraversal(Node root){
-      //implement me
-   }
+   /**
+    * Post-Order Traversal for traversing the binary tree
+    * @param root Root node for traversing the binary search tree in post order
+    */
+    public void postOrderTraversal(Node root)
+    {
+       if(root == null)
+      {
+         return;
+      }
+       inOrderTraversal(root.left);
+       inOrderTraversal(root.right);
+       System.out.print(root.value + ", ");
+    }
    
    
    
