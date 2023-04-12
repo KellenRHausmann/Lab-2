@@ -37,27 +37,36 @@ class BinarySearchTree{
    
    
    
-   /*
-   pre-order traversal
-   */
-   public void preOrderTraversal(Node root){
-      if(root == null)
+   /**
+     * Pre-order Traversal traversal for traversing the binary tree
+     * @param root Root for traversing the binary search tree
+     */
+    public void preOrderTraversal(Node root){
+       if(root == null)
        {
           return;
        }
        System.out.print(root.value + ", ");
        inOrderTraversal(root.left);
        inOrderTraversal(root.right);
-   }
+    }
 
    
    
-   /*
-   in-order traversal
-   */
-   public void inOrderTraversal(Node root){
-      //implement me
-   }
+   /**
+    * In-order traversal for traversing the binary tree
+    * @param root Root node for traversing the binary search tree
+    */
+    public void inOrderTraversal(Node root)
+    {
+      if(root == null)
+      {
+         return;
+      }
+      inOrderTraversal(root.left);
+      System.out.print(root.value + ", ");
+      inOrderTraversal(root.right);
+    }
    
    
    
